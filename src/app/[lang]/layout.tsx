@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Rubik_Mono_One } from "next/font/google";
 import "../globals.css";
-import { i18n, type Locale } from "@/i18n/config";
+import { i18n } from "@/i18n/config";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -51,13 +51,15 @@ export async function generateStaticParams() {
     return i18n.locales.map((locale) => ({ lang: locale }));
 }
 
+type Params = Promise<{ lang: string }>;
+
 export default async function RootLayout({
     children,
     params,
-}: Readonly<{
+}: {
     children: React.ReactNode;
-    params: Promise<{ lang: Locale }>;
-}>) {
+    params: Params;
+}) {
     const { lang } = await params;
 
     return (
