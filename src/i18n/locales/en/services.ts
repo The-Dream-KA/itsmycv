@@ -1,0 +1,37 @@
+export const services = {
+    title: 'Why choose',
+    subtitle: 'Your CV is Digitalized, Secure, and always accessible, Anytime & Anywhere.',
+    service1: {
+        title: 'Ease of use',
+        feature1: 'Intuitive interface',
+        feature2: 'Create & Edit easily',
+        feature3: 'One-click sharing',
+        feature4: 'Multiple CV variants',
+        feature5: 'Your CV is centralised in one place',
+        feature6: 'Always up to date',
+        feature7: 'Ready to download as PDF',
+        feature8: 'Share via Email, Link, QR code',
+    },
+    service2: {
+        title: 'Share once, apply everywhere',
+        feature1: 'No need to adapt to every company\'s system',
+        feature2: 'Just send your ItsMyCV link or one smart file',
+        feature3: 'Companies (or their ATS/API) can access the right info',
+        feature4: 'Standardised format',
+        feature5: 'Universal compatibility',
+        feature6: 'QR code generation',
+    },
+    service3: {
+        title: 'Digital security',
+        feature1: 'Your personal data is protected with bank-level security',
+        feature2: 'You control who sees your CV and when',
+        feature3: 'Encrypted data storage',
+        feature4: 'Access control',
+        feature5: 'GDPR compliant',
+        feature6: 'Permission requests',
+    },
+    cta: {
+        ready: 'Ready to get started?',
+        button: 'Create Your Digital CV Now | 100% Free',
+    },
+} as const;

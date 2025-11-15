@@ -1,0 +1,37 @@
+export const services = {
+    title: 'Waarom kiezen voor',
+    subtitle: 'Uw CV is gedigitaliseerd, veilig en altijd toegankelijk, altijd en overal.',
+    service1: {
+        title: 'Gebruiksgemak',
+        feature1: 'Intuïtieve interface',
+        feature2: 'Eenvoudig creëren en bewerken',
+        feature3: 'Delen met één klik',
+        feature4: 'Meerdere CV-varianten',
+        feature5: 'Uw CV is gecentraliseerd op één plek',
+        feature6: 'Altijd up-to-date',
+        feature7: 'Klaar om te downloaden als PDF',
+        feature8: 'Delen via e-mail, link, QR-code',
+    },
+    service2: {
+        title: 'Eenmaal delen, overal solliciteren',
+        feature1: 'Geen aanpassing nodig aan het systeem van elk bedrijf',
+        feature2: 'Stuur gewoon uw ItsMyCV-link of één slim bestand',
+        feature3: 'Bedrijven (of hun ATS/API) hebben toegang tot de juiste informatie',
+        feature4: 'Gestandaardiseerd formaat',
+        feature5: 'Universele compatibiliteit',
+        feature6: 'QR-code generatie',
+    },
+    service3: {
+        title: 'Digitale beveiliging',
+        feature1: 'Uw persoonlijke gegevens zijn beschermd met beveiliging op bankniveau',
+        feature2: 'U bepaalt wie uw CV ziet en wanneer',
+        feature3: 'Versleutelde gegevensopslag',
+        feature4: 'Toegangscontrole',
+        feature5: 'AVG-conform',
+        feature6: 'Toestemmingsverzoeken',
+    },
+    cta: {
+        ready: 'Klaar om te beginnen?',
+        button: 'Creëer nu uw digitale CV | 100% Gratis',
+    },
+} as const;

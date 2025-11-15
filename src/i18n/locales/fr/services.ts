@@ -1,0 +1,37 @@
+export const services = {
+    title: 'Pourquoi choisir',
+    subtitle: 'Votre CV est numérisé, sécurisé et toujours accessible, à tout moment et partout.',
+    service1: {
+        title: 'Facilité d\'utilisation',
+        feature1: 'Interface intuitive',
+        feature2: 'Créer et modifier facilement',
+        feature3: 'Partage en un clic',
+        feature4: 'Plusieurs variantes de CV',
+        feature5: 'Votre CV est centralisé en un seul endroit',
+        feature6: 'Toujours à jour',
+        feature7: 'Prêt à télécharger en PDF',
+        feature8: 'Partager par email, lien, code QR',
+    },
+    service2: {
+        title: 'Partagez une fois, postulez partout',
+        feature1: 'Pas besoin de s\'adapter au système de chaque entreprise',
+        feature2: 'Envoyez simplement votre lien ItsMyCV ou un fichier intelligent',
+        feature3: 'Les entreprises (ou leur ATS/API) peuvent accéder aux bonnes informations',
+        feature4: 'Format standardisé',
+        feature5: 'Compatibilité universelle',
+        feature6: 'Génération de code QR',
+    },
+    service3: {
+        title: 'Sécurité numérique',
+        feature1: 'Vos données personnelles sont protégées avec une sécurité de niveau bancaire',
+        feature2: 'Vous contrôlez qui voit votre CV et quand',
+        feature3: 'Stockage de données crypté',
+        feature4: 'Contrôle d\'accès',
+        feature5: 'Conforme RGPD',
+        feature6: 'Demandes d\'autorisation',
+    },
+    cta: {
+        ready: 'Prêt à commencer?',
+        button: 'Créez votre CV numérique maintenant | 100% Gratuit',
+    },
+} as const;

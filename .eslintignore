@@ -1,0 +1,4 @@
+# Ignore PWA generated files and utility scripts
+public/sw.js
+public/workbox-*.js
+public/generate-icons.js

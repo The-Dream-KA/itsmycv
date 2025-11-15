@@ -1,0 +1,55 @@
+export const faq = {
+    title: 'Frequently Asked Questions',
+    subtitle: 'Everything you need to know about itsmycv.be',
+    search: 'Search FAQs...',
+    categories: 'Categories',
+    all: 'All',
+    gettingStarted: 'Getting Started',
+    features: 'Features',
+    privacy: 'Privacy & Security',
+    billing: 'Billing',
+    technical: 'Technical',
+    notFound: 'No matching questions found. Try different keywords or',
+    contactUs: 'contact our support team',
+    stillNeedHelp: 'Still need help?',
+    stillNeedHelpDesc: 'Can\'t find the answer you\'re looking for? Our support team is here to help.',
+    contactSupport: 'Contact Support',
+    visitHelp: 'Visit Help Center',
+    items: [
+        {
+            category: 'Getting Started',
+            question: 'What is itsmycv.be?',
+            answer: 'itsmycv.be is a digital platform that allows you to create, edit, manage, and share your professional CV instantly and securely. Think of it as your CV in your pocket - accessible anytime, anywhere.',
+        },
+        {
+            category: 'Getting Started',
+            question: 'How do I create my digital CV?',
+            answer: 'Simply sign up for a free account, fill in your professional information, education, work experience, and skills. Our intuitive interface guides you through each step to create a professional CV in minutes.',
+        },
+        {
+            category: 'Getting Started',
+            question: 'Is itsmycv.be really free?',
+            answer: 'Yes! We offer a 100% free tier that includes all essential features for creating and sharing your digital CV. Premium features are available for users who need advanced functionality.',
+        },
+        {
+            category: 'Features',
+            question: 'Can I share my CV with recruiters?',
+            answer: 'Absolutely! You can share your CV via a unique link, QR code, or directly transfer it to recruiters with just one click. You have full control over who sees your information.',
+        },
+        {
+            category: 'Features',
+            question: 'Can I edit my CV after creating it?',
+            answer: 'Yes, you can edit your CV anytime. All changes are saved automatically and reflected immediately when you share your CV link.',
+        },
+        {
+            category: 'Features',
+            question: 'What formats can I export my CV in?',
+            answer: 'You can export your CV as PDF, share it as a live digital link, or generate a QR code for instant access. More export formats are coming soon!',
+        },
+        {
+            category: 'Privacy & Security',
+            question: 'Is my data secure?',
+            answer: 'Yes, we take security seriously. Your data is encrypted, stored securely, and we comply with GDPR regulations. You have full control over your information and can delete your account at any time.',
+        },
+    ],
+} as const;

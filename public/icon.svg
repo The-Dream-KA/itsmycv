@@ -1,0 +1,11 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <!-- Dark navy background -->
+    <rect width="512" height="512" rx="128" fill="#1a1d2e"/>
+
+    <!-- White abstract shape (like the logo) -->
+    <path d="M256 120 C220 120, 190 150, 190 186 C190 210, 200 230, 220 245 C200 260, 190 280, 190 304 C190 340, 220 370, 256 370 C292 370, 322 340, 322 304 C322 280, 312 260, 292 245 C312 230, 322 210, 322 186 C322 150, 292 120, 256 120 Z M256 145 C278 145, 297 164, 297 186 C297 208, 278 227, 256 227 C234 227, 215 208, 215 186 C215 164, 234 145, 256 145 Z M256 263 C234 263, 215 282, 215 304 C215 326, 234 345, 256 345 C278 345, 297 326, 297 304 C297 282, 278 263, 256 263 Z" fill="white"/>
+
+    <!-- Text below -->
+    <text x="256" y="420" font-family="Arial, sans-serif" font-size="32" font-weight="500" fill="#a0a0b0" text-anchor="middle">Your digital</text>
+</svg>

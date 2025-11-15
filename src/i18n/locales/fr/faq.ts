@@ -1,0 +1,55 @@
+export const faq = {
+    title: 'Questions fréquemment posées',
+    subtitle: 'Tout ce que vous devez savoir sur itsmycv.be',
+    search: 'Rechercher dans les FAQ...',
+    categories: 'Catégories',
+    all: 'Tout',
+    gettingStarted: 'Démarrage',
+    features: 'Fonctionnalités',
+    privacy: 'Confidentialité et sécurité',
+    billing: 'Facturation',
+    technical: 'Technique',
+    notFound: 'Aucune question correspondante trouvée. Essayez d\'autres mots-clés ou',
+    contactUs: 'contactez notre équipe de support',
+    stillNeedHelp: 'Besoin d\'aide?',
+    stillNeedHelpDesc: 'Vous ne trouvez pas la réponse que vous cherchez? Notre équipe de support est là pour vous aider.',
+    contactSupport: 'Contacter le support',
+    visitHelp: 'Visiter le centre d\'aide',
+    items: [
+        {
+            category: 'Démarrage',
+            question: 'Qu\'est-ce que itsmycv.be?',
+            answer: 'itsmycv.be est une plateforme numérique qui vous permet de créer, modifier, gérer et partager votre CV professionnel instantanément et en toute sécurité. Pensez-y comme votre CV dans votre poche - accessible à tout moment, n\'importe où.',
+        },
+        {
+            category: 'Démarrage',
+            question: 'Comment créer mon CV numérique?',
+            answer: 'Inscrivez-vous simplement pour un compte gratuit, remplissez vos informations professionnelles, votre formation, votre expérience professionnelle et vos compétences. Notre interface intuitive vous guide à travers chaque étape pour créer un CV professionnel en quelques minutes.',
+        },
+        {
+            category: 'Démarrage',
+            question: 'itsmycv.be est-il vraiment gratuit?',
+            answer: 'Oui! Nous offrons un niveau 100% gratuit qui inclut toutes les fonctionnalités essentielles pour créer et partager votre CV numérique. Des fonctionnalités premium sont disponibles pour les utilisateurs qui ont besoin de fonctionnalités avancées.',
+        },
+        {
+            category: 'Fonctionnalités',
+            question: 'Puis-je partager mon CV avec des recruteurs?',
+            answer: 'Absolument! Vous pouvez partager votre CV via un lien unique, un code QR, ou le transférer directement aux recruteurs en un seul clic. Vous avez un contrôle total sur qui voit vos informations.',
+        },
+        {
+            category: 'Fonctionnalités',
+            question: 'Puis-je modifier mon CV après l\'avoir créé?',
+            answer: 'Oui, vous pouvez modifier votre CV à tout moment. Toutes les modifications sont enregistrées automatiquement et reflétées immédiatement lorsque vous partagez votre lien CV.',
+        },
+        {
+            category: 'Fonctionnalités',
+            question: 'Dans quels formats puis-je exporter mon CV?',
+            answer: 'Vous pouvez exporter votre CV en PDF, le partager comme un lien numérique en direct, ou générer un code QR pour un accès instantané. Plus de formats d\'exportation arrivent bientôt!',
+        },
+        {
+            category: 'Confidentialité et sécurité',
+            question: 'Mes données sont-elles sécurisées?',
+            answer: 'Oui, nous prenons la sécurité au sérieux. Vos données sont cryptées, stockées en toute sécurité, et nous nous conformons aux réglementations RGPD. Vous avez un contrôle total sur vos informations et pouvez supprimer votre compte à tout moment.',
+        },
+    ],
+} as const;

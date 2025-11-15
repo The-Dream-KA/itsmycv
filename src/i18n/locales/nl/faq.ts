@@ -1,0 +1,55 @@
+export const faq = {
+    title: 'Veelgestelde vragen',
+    subtitle: 'Alles wat u moet weten over itsmycv.be',
+    search: 'Zoek in FAQ...',
+    categories: 'Categorieën',
+    all: 'Alle',
+    gettingStarted: 'Aan de slag',
+    features: 'Functies',
+    privacy: 'Privacy & Beveiliging',
+    billing: 'Facturering',
+    technical: 'Technisch',
+    notFound: 'Geen overeenkomende vragen gevonden. Probeer andere zoekwoorden of',
+    contactUs: 'neem contact op met ons ondersteuningsteam',
+    stillNeedHelp: 'Nog steeds hulp nodig?',
+    stillNeedHelpDesc: 'Kunt u het antwoord dat u zoekt niet vinden? Ons ondersteuningsteam is er om te helpen.',
+    contactSupport: 'Contact opnemen met ondersteuning',
+    visitHelp: 'Bezoek het helpcentrum',
+    items: [
+        {
+            category: 'Aan de slag',
+            question: 'Wat is itsmycv.be?',
+            answer: 'itsmycv.be is een digitaal platform waarmee u uw professionele CV direct en veilig kunt creëren, bewerken, beheren en delen. Beschouw het als uw CV in uw zak - altijd en overal toegankelijk.',
+        },
+        {
+            category: 'Aan de slag',
+            question: 'Hoe maak ik mijn digitale CV?',
+            answer: 'Meld u eenvoudig aan voor een gratis account, vul uw professionele informatie, opleiding, werkervaring en vaardigheden in. Onze intuïtieve interface begeleidt u door elke stap om binnen enkele minuten een professioneel CV te maken.',
+        },
+        {
+            category: 'Aan de slag',
+            question: 'Is itsmycv.be echt gratis?',
+            answer: 'Ja! We bieden een 100% gratis niveau dat alle essentiële functies omvat voor het maken en delen van uw digitale CV. Premium functies zijn beschikbaar voor gebruikers die geavanceerde functionaliteit nodig hebben.',
+        },
+        {
+            category: 'Functies',
+            question: 'Kan ik mijn CV delen met recruiters?',
+            answer: 'Absoluut! U kunt uw CV delen via een unieke link, QR-code, of het direct overdragen aan recruiters met slechts één klik. U heeft volledige controle over wie uw informatie ziet.',
+        },
+        {
+            category: 'Functies',
+            question: 'Kan ik mijn CV bewerken na het aanmaken?',
+            answer: 'Ja, u kunt uw CV op elk moment bewerken. Alle wijzigingen worden automatisch opgeslagen en onmiddellijk weergegeven wanneer u uw CV-link deelt.',
+        },
+        {
+            category: 'Functies',
+            question: 'In welke formaten kan ik mijn CV exporteren?',
+            answer: 'U kunt uw CV exporteren als PDF, het delen als een live digitale link, of een QR-code genereren voor directe toegang. Meer exportformaten komen binnenkort!',
+        },
+        {
+            category: 'Privacy & Beveiliging',
+            question: 'Zijn mijn gegevens veilig?',
+            answer: 'Ja, we nemen beveiliging serieus. Uw gegevens zijn versleuteld, veilig opgeslagen en we voldoen aan de AVG-regelgeving. U heeft volledige controle over uw informatie en kunt uw account op elk moment verwijderen.',
+        },
+    ],
+} as const;
