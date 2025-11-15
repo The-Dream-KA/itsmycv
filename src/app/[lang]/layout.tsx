@@ -33,10 +33,9 @@ export const metadata: Metadata = {
     },
     icons: {
         icon: [
-            { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-            { url: '/favicon.png', sizes: '32x32', type: 'image/png' },
+            { url: 'https://res.cloudinary.com/docxvgl2f/image/upload/v1763148966/itsmycv-logo-pink_dkyfav.svg', type: 'image/svg+xml' },
         ],
-        apple: '/icon-192x192.png',
+        apple: 'https://res.cloudinary.com/docxvgl2f/image/upload/v1763148966/itsmycv-logo-pink_dkyfav.svg',
     },
 };
 
