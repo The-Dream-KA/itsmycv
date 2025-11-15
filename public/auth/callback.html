@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signing in - ItsMyCv</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 100%;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .logo {
+            margin-bottom: 30px;
+        }
+
+        .logo h1 {
+            color: #667eea;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f4f6;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        h2 {
+            color: #1f2937;
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        p {
+            color: #6b7280;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .success-icon {
+            display: none;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: #d1fae5;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .success-icon.active {
+            display: block;
+            animation: scaleIn 0.3s ease-in-out;
+        }
+
+        @keyframes scaleIn {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
+
+        .success-icon::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #065f46;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .error {
+            display: none;
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .error.active {
+            display: block;
+        }
+
+        .retry-btn {
+            display: none;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .retry-btn.active {
+            display: inline-block;
+        }
+
+        .retry-btn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>ItsMyCv</h1>
+        </div>
+
+        <div class="spinner" id="spinner"></div>
+        <div class="success-icon" id="successIcon"></div>
+
+        <h2 id="title">Completing sign in...</h2>
+        <p id="message">Please wait while we verify your account</p>
+
+        <div class="error" id="error"></div>
+        <button class="retry-btn" id="retryBtn" onclick="window.location.href='/auth'">Try Again</button>
+    </div>
+
+    <script>
+        // Configuration
+        const SUPABASE_URL = 'https://zhqsfsqklskcvjqrpodn.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpocXNmc3FrbHNrY3ZqcXJwb2RuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI4ODI1NTgsImV4cCI6MjA3ODQ1ODU1OH0.Z_-H8cg0QsRiOCQLCjtzMz-xQfsqQ8Y62-_-evvG2QY';
+
+        // Initialize Supabase client
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        async function handleCallback() {
+            try {
+                // Get the session from the URL hash
+                const { data, error } = await supabase.auth.getSession();
+
+                if (error) throw error;
+
+                if (data.session) {
+                    // Success!
+                    showSuccess();
+                    
+                    // Store session info
+                    localStorage.setItem('supabase.auth.token', JSON.stringify(data.session));
+                    
+                    // Redirect to main site after 2 seconds
+                    setTimeout(() => {
+                        window.location.href = 'https://itsmycv.be';
+                    }, 2000);
+                } else {
+                    throw new Error('No session found');
+                }
+
+            } catch (err) {
+                console.error('Callback error:', err);
+                showError(err.message || 'Failed to complete sign in');
+            }
+        }
+
+        function showSuccess() {
+            document.getElementById('spinner').style.display = 'none';
+            document.getElementById('successIcon').classList.add('active');
+            document.getElementById('title').textContent = 'Sign in successful!';
+            document.getElementById('message').textContent = 'Redirecting you to ItsMyCv...';
+        }
+
+        function showError(message) {
+            document.getElementById('spinner').style.display = 'none';
+            document.getElementById('title').textContent = 'Sign in failed';
+            document.getElementById('message').textContent = '';
+            
+            const error = document.getElementById('error');
+            error.textContent = message;
+            error.classList.add('active');
+            
+            document.getElementById('retryBtn').classList.add('active');
+        }
+
+        // Handle callback on load
+        handleCallback();
+    </script>
+</body>
+</html>

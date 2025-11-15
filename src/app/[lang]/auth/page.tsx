@@ -27,13 +27,8 @@ export default function AuthPage() {
 
   const handleGoogleSignIn = async () => {
     try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: `${window.location.origin}/auth/callback`,
-        },
-      })
-      if (error) throw error
+      // Use our custom OAuth flow that shows itsmycv.be domain
+      window.location.href = '/api/auth/google?redirectTo=/auth/callback'
     } catch (error: any) {
       alert(error.message)
     }
