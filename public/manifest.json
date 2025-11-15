@@ -9,27 +9,9 @@
     "orientation": "portrait-primary",
     "icons": [
         {
-            "src": "/icon-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png",
-            "purpose": "any maskable"
-        },
-        {
-            "src": "/icon-256x256.png",
-            "sizes": "256x256",
-            "type": "image/png",
-            "purpose": "any maskable"
-        },
-        {
-            "src": "/icon-384x384.png",
-            "sizes": "384x384",
-            "type": "image/png",
-            "purpose": "any maskable"
-        },
-        {
-            "src": "/icon-512x512.png",
-            "sizes": "512x512",
-            "type": "image/png",
+            "src": "https://res.cloudinary.com/docxvgl2f/image/upload/v1763148966/itsmycv-logo-pink_dkyfav.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
             "purpose": "any maskable"
         }
     ],
@@ -46,8 +28,9 @@
             "url": "/create",
             "icons": [
                 {
-                    "src": "/icon-192x192.png",
-                    "sizes": "192x192"
+                    "src": "https://res.cloudinary.com/docxvgl2f/image/upload/v1763148966/itsmycv-logo-pink_dkyfav.svg",
+                    "sizes": "any",
+                    "type": "image/svg+xml"
                 }
             ]
         },
@@ -58,8 +41,9 @@
             "url": "/dashboard",
             "icons": [
                 {
-                    "src": "/icon-192x192.png",
-                    "sizes": "192x192"
+                    "src": "https://res.cloudinary.com/docxvgl2f/image/upload/v1763148966/itsmycv-logo-pink_dkyfav.svg",
+                    "sizes": "any",
+                    "type": "image/svg+xml"
                 }
             ]
         }
