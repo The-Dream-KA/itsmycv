@@ -6,10 +6,13 @@ import { ASSETS } from '@/lib/constants';
 import { useState, useEffect } from 'react';
 import { Locale } from '@/i18n/config';
 import { getTranslations } from '@/i18n/translations';
+import { createClient } from '@/lib/supabase/client';
 
 export default function Hero({ lang }: { lang: Locale }) {
     const t = getTranslations(lang);
     const [currentLogo, setCurrentLogo] = useState(0);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const supabase = createClient();
     const logos = [
         ASSETS.logo,
         'https://res.cloudinary.com/docxvgl2f/image/upload/v1762921046/yourdigitalcv-logo-black_tec1du.svg',
@@ -23,6 +26,18 @@ export default function Hero({ lang }: { lang: Locale }) {
 
         return () => clearInterval(interval);
     }, [logos.length]);
+
+    useEffect(() => {
+        supabase.auth.getSession().then(({ data: { session } }) => {
+            setIsAuthenticated(!!session?.user);
+        });
+
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+            setIsAuthenticated(!!session?.user);
+        });
+
+        return () => subscription.unsubscribe();
+    }, [supabase.auth]);
 
     return (
         <section className="min-h-screen bg-white flex items-center overflow-hidden pt-20 sm:pt-24 pb-8 sm:pb-12 lg:pb-0">
@@ -42,10 +57,10 @@ export default function Hero({ lang }: { lang: Locale }) {
 
                         <div className="flex justify-center lg:justify-start">
                             <Link
-                                href={`/${lang}/signup`}
+                                href={isAuthenticated ? `/${lang}/dashboard` : `/${lang}/auth`}
                                 className="inline-flex items-center justify-center bg-[#ff007a] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-black hover:text-white hover:border-black transition-all touch-manipulation active:scale-95"
                             >
-                                {t.hero.getStarted}
+                                {isAuthenticated ? t.hero.dashboard : t.hero.getStarted}
                             </Link>
                         </div>
 

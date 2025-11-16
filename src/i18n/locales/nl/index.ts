@@ -8,6 +8,7 @@ import { about } from './about';
 import { faq } from './faq';
 import { blog } from './blog';
 import { support } from './support';
+import { auth } from './auth';
 import { digitalCvFuture, cvTips2025, secureJobApplications, otherPosts } from './blog-posts';
 
 export const nl = {
@@ -29,6 +30,7 @@ export const nl = {
         },
     },
     support,
+    auth,
 } as const;
 
 export const nlWithPosts = nl;

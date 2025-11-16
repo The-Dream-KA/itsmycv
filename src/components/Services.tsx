@@ -1,10 +1,28 @@
+'use client';
+
 import { APP_CONFIG } from '@/lib/constants';
 import Link from 'next/link';
 import { Locale } from '@/i18n/config';
 import { getTranslations } from '@/i18n/translations';
+import { useState, useEffect } from 'react';
+import { createClient } from '@/lib/supabase/client';
 
 export default function Services({ lang }: { lang: Locale }) {
     const t = getTranslations(lang);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const supabase = createClient();
+
+    useEffect(() => {
+        supabase.auth.getSession().then(({ data: { session } }) => {
+            setIsAuthenticated(!!session?.user);
+        });
+
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+            setIsAuthenticated(!!session?.user);
+        });
+
+        return () => subscription.unsubscribe();
+    }, [supabase.auth]);
 
     const services = [
         {
@@ -101,10 +119,10 @@ export default function Services({ lang }: { lang: Locale }) {
                             {t.services.cta.ready}
                         </span>
                         <Link
-                            href={`/${lang}/signup`}
+                            href={isAuthenticated ? `/${lang}/dashboard` : `/${lang}/auth`}
                             className="bg-[#ff007a] hover:bg-black text-white px-6 py-3 rounded-full font-semibold text-sm sm:text-base transition-colors touch-manipulation active:scale-95"
                         >
-                            {t.services.cta.button}
+                            {isAuthenticated ? t.services.cta.dashboard : t.services.cta.button}
                         </Link>
                     </div>
                 </div>

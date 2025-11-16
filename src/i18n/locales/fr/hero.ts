@@ -7,6 +7,7 @@ export const hero = {
     subtitleEnd: 'votre CV instantanément et en toute sécurité, en un clic |',
     subtitleFree: '100% Gratuit',
     getStarted: 'Commencer',
+    dashboard: 'Tableau de bord',
     trustSecure: 'Sécurisé | Conforme RGPD',
     trustTransfer: 'Transfert',
     trustBelgian: 'Belge',

@@ -33,5 +33,6 @@ export const services = {
     cta: {
         ready: 'Ready to get started?',
         button: 'Create Your Digital CV Now | 100% Free',
+        dashboard: 'Go to Dashboard',
     },
 } as const;

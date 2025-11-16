@@ -1,0 +1,31 @@
+export const auth = {
+    title: "Welkom bij ItsMyCV",
+    subtitle: "Maak je digitale CV in enkele seconden",
+    googleButton: "Doorgaan met Google",
+    divider: "of",
+    emailTitle: "Inloggen met Email",
+    emailPlaceholder: "jouw@email.com",
+    passwordPlaceholder: "Voer je wachtwoord in",
+    signInButton: "Inloggen",
+    signUpButton: "Account aanmaken",
+    toggleSignUp: "Heb je geen account?",
+    toggleSignIn: "Heb je al een account?",
+    toggleSignUpLink: "Registreren",
+    toggleSignInLink: "Inloggen",
+    forgotPassword: "Wachtwoord vergeten?",
+    loading: "Laden...",
+    success: {
+        title: "Welkom terug!",
+        subtitle: "Je bent succesvol ingelogd",
+        signedInWith: "Ingelogd met",
+        email: "Email",
+        id: "Gebruikers-ID",
+        signOutButton: "Uitloggen",
+    },
+    errors: {
+        invalidEmail: "Voer een geldig e-mailadres in",
+        passwordTooShort: "Wachtwoord moet minimaal 6 tekens bevatten",
+        signInFailed: "Inloggen mislukt. Probeer het opnieuw.",
+        signUpFailed: "Registratie mislukt. Probeer het opnieuw.",
+    }
+} as const;

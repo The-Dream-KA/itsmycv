@@ -8,14 +8,17 @@ import { Globe, ChevronDown, Menu, X } from 'lucide-react';
 import { ASSETS } from '@/lib/constants';
 import { Locale } from '@/i18n/config';
 import { getTranslations } from '@/i18n/translations';
+import { createClient } from '@/lib/supabase/client';
 
 export default function Navbar({ lang }: { lang: Locale }) {
     const t = getTranslations(lang);
     const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const pathname = usePathname();
     const router = useRouter();
     const dropdownRef = useRef<HTMLDivElement>(null);
+    const supabase = createClient();
 
     const languages = [
         { code: 'en', name: 'English', display: 'EN' },
@@ -53,6 +56,19 @@ export default function Navbar({ lang }: { lang: Locale }) {
             document.body.style.overflow = 'unset';
         };
     }, [isMobileMenuOpen]);
+
+    // Check authentication status
+    useEffect(() => {
+        supabase.auth.getSession().then(({ data: { session } }) => {
+            setIsAuthenticated(!!session?.user);
+        });
+
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+            setIsAuthenticated(!!session?.user);
+        });
+
+        return () => subscription.unsubscribe();
+    }, [supabase.auth]);
 
     const handleLanguageSelect = (langCode: string) => {
         setIsLanguageDropdownOpen(false);
@@ -158,10 +174,10 @@ export default function Navbar({ lang }: { lang: Locale }) {
 
                             {/* Get Started Button - Desktop */}
                             <Link
-                                href={`/${lang}/signup`}
+                                href={isAuthenticated ? `/${lang}/dashboard` : `/${lang}/auth`}
                                 className="hidden sm:inline-flex bg-black hover:bg-white text-white hover:text-black px-4 sm:px-6 py-2 rounded-full font-medium transition-colors shadow-sm border-2 border-black text-sm"
                             >
-                                {t.navbar.getStarted}
+                                {isAuthenticated ? t.navbar.dashboard : t.navbar.getStarted}
                             </Link>
 
                             {/* Mobile Menu Toggle */}
@@ -209,10 +225,10 @@ export default function Navbar({ lang }: { lang: Locale }) {
                             </Link>
                             <div className="pt-4 border-t border-white/20">
                                 <Link
-                                    href={`/${lang}/signup`}
+                                    href={isAuthenticated ? `/${lang}/dashboard` : `/${lang}/auth`}
                                     className="block text-center bg-black text-white px-4 py-3 rounded-full font-semibold text-base hover:bg-white hover:text-black border-2 border-black transition-colors"
                                 >
-                                    {t.navbar.getStarted}
+                                    {isAuthenticated ? t.navbar.dashboard : t.navbar.getStarted}
                                 </Link>
                             </div>
                         </div>

@@ -72,20 +72,16 @@ export async function GET(request: NextRequest) {
             throw signInError
         }
 
-        // Set the session cookie
-        const response = NextResponse.redirect(`${process.env.NEXT_PUBLIC_SITE_URL}${state}`)
+        // Redirect with session in URL for client to pick up
+        const redirectUrl = new URL(`${process.env.NEXT_PUBLIC_SITE_URL}${state}`)
 
         if (signInData.session) {
-            response.cookies.set('supabase-auth-token', signInData.session.access_token, {
-                httpOnly: true,
-                secure: process.env.NODE_ENV === 'production',
-                sameSite: 'lax',
-                maxAge: 60 * 60 * 24 * 7, // 7 days
-                path: '/',
-            })
+            // Add session info to URL so client can establish session
+            redirectUrl.searchParams.set('access_token', signInData.session.access_token)
+            redirectUrl.searchParams.set('refresh_token', signInData.session.refresh_token)
         }
 
-        return response
+        return NextResponse.redirect(redirectUrl.toString())
 
     } catch (error) {
         console.error('OAuth callback error:', error)

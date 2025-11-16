@@ -4,4 +4,5 @@ export const navbar = {
     comingSoon: 'Coming Soon',
     blog: 'Blog',
     getStarted: 'Get Started',
+    dashboard: 'Dashboard',
 } as const;

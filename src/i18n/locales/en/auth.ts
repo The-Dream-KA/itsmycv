@@ -1,0 +1,31 @@
+export const auth = {
+    title: "Welcome to ItsMyCV",
+    subtitle: "Create your digital CV in seconds",
+    googleButton: "Continue with Google",
+    divider: "or",
+    emailTitle: "Sign in with Email",
+    emailPlaceholder: "your@email.com",
+    passwordPlaceholder: "Enter your password",
+    signInButton: "Sign In",
+    signUpButton: "Create Account",
+    toggleSignUp: "Don't have an account?",
+    toggleSignIn: "Already have an account?",
+    toggleSignUpLink: "Sign up",
+    toggleSignInLink: "Sign in",
+    forgotPassword: "Forgot password?",
+    loading: "Loading...",
+    success: {
+        title: "Welcome Back!",
+        subtitle: "You're successfully signed in",
+        signedInWith: "Signed in with",
+        email: "Email",
+        id: "User ID",
+        signOutButton: "Sign Out",
+    },
+    errors: {
+        invalidEmail: "Please enter a valid email address",
+        passwordTooShort: "Password must be at least 6 characters",
+        signInFailed: "Sign in failed. Please try again.",
+        signUpFailed: "Sign up failed. Please try again.",
+    }
+} as const;

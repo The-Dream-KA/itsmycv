@@ -4,4 +4,5 @@ export const navbar = {
     comingSoon: 'Binnenkort beschikbaar',
     blog: 'Blog',
     getStarted: 'Aan de slag',
+    dashboard: 'Dashboard',
 } as const;

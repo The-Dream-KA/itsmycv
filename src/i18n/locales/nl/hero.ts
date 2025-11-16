@@ -7,6 +7,7 @@ export const hero = {
     subtitleEnd: 'uw CV direct en veilig, met één klik |',
     subtitleFree: '100% Gratis',
     getStarted: 'Aan de slag',
+    dashboard: 'Dashboard',
     trustSecure: 'Veilig | AVG-conform',
     trustTransfer: 'Overdracht',
     trustBelgian: 'Belgisch',

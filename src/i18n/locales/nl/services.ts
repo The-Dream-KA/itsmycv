@@ -32,6 +32,7 @@ export const services = {
     },
     cta: {
         ready: 'Klaar om te beginnen?',
-        button: 'Creëer nu uw digitale CV | 100% Gratis',
+        button: 'Maak nu je digitale CV | 100% Gratis',
+        dashboard: 'Ga naar dashboard',
     },
 } as const;

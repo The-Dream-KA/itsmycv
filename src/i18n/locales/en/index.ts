@@ -9,6 +9,7 @@ import { faq } from './faq';
 import { blog } from './blog';
 import { blogPosts } from './blog-posts';
 import { support } from './support';
+import { auth } from './auth';
 
 export const en = {
     navbar,
@@ -21,6 +22,7 @@ export const en = {
     faq,
     blog,
     support,
+    auth,
 } as const;
 
 // Merge blog posts into blog section

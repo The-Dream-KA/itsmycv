@@ -31,7 +31,8 @@ export const services = {
         feature6: 'Demandes d\'autorisation',
     },
     cta: {
-        ready: 'Prêt à commencer?',
+        ready: 'Prêt à commencer ?',
         button: 'Créez votre CV numérique maintenant | 100% Gratuit',
+        dashboard: 'Aller au tableau de bord',
     },
 } as const;
