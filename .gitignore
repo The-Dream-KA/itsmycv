@@ -47,3 +47,7 @@ next-env.d.ts
 /public/workbox-*.js.map
 
 /src/generated/prisma
+
+# docs folder
+/docs
+/docs/*
