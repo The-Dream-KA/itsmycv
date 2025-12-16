@@ -17,7 +17,7 @@ export const useExpandedSections = () => {
         interests: false
     })
 
-    const toggleSection = (section: string) => {
+    const toggleSection = (section: keyof ExpandedSections) => {
         setExpandedSections(prev => ({ ...prev, [section]: !prev[section] }))
     }
 
