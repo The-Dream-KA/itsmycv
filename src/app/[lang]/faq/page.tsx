@@ -24,7 +24,6 @@ export default function FAQPage({ params }: { params: Promise<{ lang: Locale }> 
     const [searchQuery, setSearchQuery] = useState('');
     const [activeCategory, setActiveCategory] = useState<string>(t.faq.all);
     const [openItems, setOpenItems] = useState<Set<number>>(new Set());
-
     const toggleItem = (index: number) => {
         const newOpenItems = new Set(openItems);
         if (newOpenItems.has(index)) {

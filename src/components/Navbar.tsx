@@ -4,21 +4,23 @@ import { useState, useRef, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Globe, ChevronDown, Menu, X } from 'lucide-react';
-import { ASSETS } from '@/lib/constants';
+import { ChevronDown, Menu, X } from 'lucide-react';
 import { Locale } from '@/i18n/config';
 import { getTranslations } from '@/i18n/translations';
-import { createClient } from '@/lib/supabase/client';
+import { useAuth } from '@/context/AuthContext';
 
-export default function Navbar({ lang }: { lang: Locale }) {
+interface NavbarProps {
+    lang: Locale;
+}
+
+export default function Navbar({ lang }: NavbarProps) {
     const t = getTranslations(lang);
+    const { isAuthenticated } = useAuth();
     const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const pathname = usePathname();
     const router = useRouter();
     const dropdownRef = useRef<HTMLDivElement>(null);
-    const supabase = createClient();
 
     const languages = [
         { code: 'en', name: 'English', display: 'EN' },
@@ -42,8 +44,13 @@ export default function Navbar({ lang }: { lang: Locale }) {
 
     // Close mobile menu on route change
     useEffect(() => {
-        setIsMobileMenuOpen(false);
-    }, [pathname]);
+        if (!isMobileMenuOpen) {
+            return;
+        }
+
+        const frame = requestAnimationFrame(() => setIsMobileMenuOpen(false));
+        return () => cancelAnimationFrame(frame);
+    }, [pathname, isMobileMenuOpen]);
 
     // Prevent body scroll when mobile menu is open
     useEffect(() => {
@@ -56,19 +63,6 @@ export default function Navbar({ lang }: { lang: Locale }) {
             document.body.style.overflow = 'unset';
         };
     }, [isMobileMenuOpen]);
-
-    // Check authentication status
-    useEffect(() => {
-        supabase.auth.getSession().then(({ data: { session } }) => {
-            setIsAuthenticated(!!session?.user);
-        });
-
-        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-            setIsAuthenticated(!!session?.user);
-        });
-
-        return () => subscription.unsubscribe();
-    }, [supabase.auth]);
 
     const handleLanguageSelect = (langCode: string) => {
         setIsLanguageDropdownOpen(false);

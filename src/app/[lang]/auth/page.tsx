@@ -52,20 +52,25 @@ export default function AuthPage({ params }: { params: Promise<{ lang: Locale }>
       supabase.auth.setSession({
         access_token: accessToken,
         refresh_token: refreshToken,
-      }).then(({ data: { session } }) => {
-        if (session?.user) {
-          // Clean URL
-          window.history.replaceState({}, document.title, `/${lang}/auth`)
-          // Redirect to dashboard
-          router.push(`/${lang}/dashboard`)
-        }
+      }).then(() => {
+        // SECURITY: Verify user with server after setting session
+        void supabase.auth.getUser().then(({ data: { user }, error }) => {
+          if (!error && user) {
+            // Clean URL
+            window.history.replaceState({}, document.title, `/${lang}/auth`)
+            // Redirect to dashboard
+            router.push(`/${lang}/dashboard`)
+          }
+        })
+      }).catch((error) => {
+        console.error('[AUTH] Error setting session:', error)
       })
       return
     }
 
-    // Check current session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      const currentUser = session?.user ?? null
+    // SECURITY: Verify authentication with Supabase Auth server
+    supabase.auth.getUser().then(({ data: { user }, error }) => {
+      const currentUser = (!error && user) ? user : null
       setUser(currentUser)
       setLoading(false)
 
@@ -78,14 +83,15 @@ export default function AuthPage({ params }: { params: Promise<{ lang: Locale }>
     // Listen for auth changes
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      const currentUser = session?.user ?? null
-      setUser(currentUser)
+    } = supabase.auth.onAuthStateChange(() => {
+      void supabase.auth.getUser().then(({ data: { user }, error }) => {
+        const currentUser = (!error && user) ? user : null
+        setUser(currentUser)
 
-      // Redirect to dashboard if user just logged in
-      if (currentUser) {
-        router.push(`/${lang}/dashboard`)
-      }
+        if (currentUser) {
+          router.push(`/${lang}/dashboard`)
+        }
+      })
     })
 
     return () => subscription.unsubscribe()

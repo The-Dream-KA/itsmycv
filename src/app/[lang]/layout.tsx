@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Rubik_Mono_One } from "next/font/google";
 import "../globals.css";
 import { i18n } from "@/i18n/config";
+import { getVerifiedUser } from "@/lib/auth";
+import { AuthProvider } from "@/context/AuthContext";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -18,6 +20,8 @@ const rubikMonoOne = Rubik_Mono_One({
     subsets: ["latin"],
     variable: "--font-rubik-mono-one",
 });
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
     title: "itsmycv | Your Digital CV",
@@ -60,13 +64,16 @@ export default async function RootLayout({
     params: Params;
 }) {
     const { lang } = await params;
+    const initialUser = await getVerifiedUser();
 
     return (
         <html lang={lang}>
             <body
                 className={`${geistSans.variable} ${geistMono.variable} ${rubikMonoOne.variable} antialiased`}
             >
-                {children}
+                <AuthProvider initialUser={initialUser}>
+                    {children}
+                </AuthProvider>
             </body>
         </html>
     );

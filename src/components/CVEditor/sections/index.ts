@@ -1,0 +1,5 @@
+export { PersonalInfoSection } from './PersonalInfoSection'
+export { ProfessionalSummarySection } from './ProfessionalSummarySection'
+export { WorkExperienceSection } from './WorkExperienceSection'
+export { SkillsSection } from './SkillsSection'
+export { GenericArraySection } from './GenericArraySection'

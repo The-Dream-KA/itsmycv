@@ -55,7 +55,7 @@ const blogPosts: Array<{
 
 export default function BlogPage({ params }: BlogPageProps) {
     const { lang } = use(params);
-    const t = getTranslations(lang).blog;
+    const t = getTranslations(lang);
 
     return (
         <div className="min-h-screen bg-white">
@@ -66,10 +66,10 @@ export default function BlogPage({ params }: BlogPageProps) {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center space-y-6">
                         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black rubik-mono-one-regular">
-                            {t.title}
+                            {t.blog.title}
                         </h1>
                         <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                            {t.subtitle}
+                            {t.blog.subtitle}
                         </p>
                     </div>
                 </div>
@@ -87,7 +87,7 @@ export default function BlogPage({ params }: BlogPageProps) {
                                 <div className="relative h-40 sm:h-48 overflow-hidden">
                                     <Image
                                         src={post.image}
-                                        alt={t.posts[post.slug].title}
+                                        alt={t.blog.posts[post.slug].title}
                                         width={800}
                                         height={400}
                                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
@@ -100,16 +100,16 @@ export default function BlogPage({ params }: BlogPageProps) {
                                         <span>{post.readTime}</span>
                                     </div>
                                     <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-black mb-2 sm:mb-3 group-hover:text-[#ff007a] transition-colors">
-                                        {t.posts[post.slug].title}
+                                        {t.blog.posts[post.slug].title}
                                     </h2>
                                     <p className="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4 line-clamp-3 leading-relaxed">
-                                        {t.posts[post.slug].excerpt}
+                                        {t.blog.posts[post.slug].excerpt}
                                     </p>
                                     <Link
                                         href={`/${lang}/blog/${post.slug}`}
                                         className="inline-flex items-center text-sm sm:text-base text-[#ff007a] hover:text-black font-semibold transition-colors touch-manipulation"
                                     >
-                                        {t.readMore}
+                                        {t.blog.readMore}
                                         <svg
                                             className="w-4 h-4 sm:w-5 sm:h-5 ml-2"
                                             fill="none"

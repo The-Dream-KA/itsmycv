@@ -4,25 +4,11 @@ import { APP_CONFIG } from '@/lib/constants';
 import Link from 'next/link';
 import { Locale } from '@/i18n/config';
 import { getTranslations } from '@/i18n/translations';
-import { useState, useEffect } from 'react';
-import { createClient } from '@/lib/supabase/client';
+import { useAuth } from '@/context/AuthContext';
 
 export default function Services({ lang }: { lang: Locale }) {
     const t = getTranslations(lang);
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const supabase = createClient();
-
-    useEffect(() => {
-        supabase.auth.getSession().then(({ data: { session } }) => {
-            setIsAuthenticated(!!session?.user);
-        });
-
-        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-            setIsAuthenticated(!!session?.user);
-        });
-
-        return () => subscription.unsubscribe();
-    }, [supabase.auth]);
+    const { isAuthenticated } = useAuth();
 
     const services = [
         {
